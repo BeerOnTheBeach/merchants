@@ -1,3 +1,4 @@
-import item from './items'
+import item from './item'
+import merchant from "./merchant";
 
-export const schemaTypes = [item]
+export const schemaTypes = [item, merchant]

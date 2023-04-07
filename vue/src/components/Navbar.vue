@@ -7,12 +7,12 @@
         </label>
         <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
           <li><router-link to="/">Merchants</router-link></li>
-          <li><router-link to="/">Locations</router-link></li>
+          <li><router-link to="/locations">Locations</router-link></li>
         </ul>
       </div>
     </div>
     <div class="navbar-center">
-      <a class="btn btn-ghost normal-case text-xl">Merchants</a>
+      <router-link to="/" class="btn btn-ghost normal-case text-xl">Merchants</router-link>
     </div>
     <div class="navbar-end">
       <button class="btn btn-ghost btn-circle">

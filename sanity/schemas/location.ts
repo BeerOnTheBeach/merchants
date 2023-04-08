@@ -1,7 +1,7 @@
 export default {
-    name: 'merchant',
+    name: 'location',
     type: 'document',
-    title: 'Merchant',
+    title: 'Location',
     fields: [
         {
             name: 'name',
@@ -14,14 +14,14 @@ export default {
             type: 'image',
         },
         {
-            name: 'items',
-            title: 'Items',
+            name: 'merchants',
+            title: 'Merchants',
             type: 'array',
             of: [{
-                    name: 'item',
-                    title: 'Item',
+                    name: 'merchant',
+                    title: 'Merchant',
                     type: 'reference',
-                    to: [{ type: 'item' }],
+                    to: [{ type: 'merchant' }],
             }],
         }
     ]

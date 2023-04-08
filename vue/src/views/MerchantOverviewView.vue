@@ -2,7 +2,7 @@
   <Loading></Loading>
   <div v-if="!merchantStore.loading" class="divide-y">
     <template :key="merchant" v-for="merchant in merchantStore.merchants">
-      <MerchantBase v-if="merchant" :merchant="merchant"></MerchantBase>
+      <MerchantBase v-if="merchant" :location="merchant"></MerchantBase>
     </template>
   </div>
 </template>

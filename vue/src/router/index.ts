@@ -6,7 +6,7 @@ import CharacterView from '../views/CharacterView.vue'
 import CharacterDetailView from '../views/CharacterDetailView.vue'
 import MerchantView from '../views/MerchantView.vue'
 import MerchantDetailView from '../views/MerchantDetailView.vue'
-import MerchantListView from '../views/MerchantListView.vue'
+import MerchantOverviewView from '../views/MerchantOverviewView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -51,7 +51,7 @@ const router = createRouter({
     {
       path: '/merchant-list',
       name: 'All Merchants',
-      component: MerchantListView
+      component: MerchantOverviewView
     },
   ]
 })

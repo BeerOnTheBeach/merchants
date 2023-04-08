@@ -4,11 +4,11 @@
       <figure class="w-40 h-32"><img v-if="imageUrl" class="object-cover" :src="imageUrl" alt=""/></figure>
       <div class="w-40 h-48 card-body">
         <h2 class="card-title">
-          {{ props.item.name }}
+          {{ props.location.name }}
         </h2>
-        <div>{{ props.item.description }}</div>
+        <div>{{ props.location.description }}</div>
         <div class="mt-auto">
-          <div class="badge badge-outline">Preis: {{ props.item.price }} Kupfer</div>
+          <div class="badge badge-outline">Preis: {{ props.location.price }} Kupfer</div>
           <div class="btn btn-primary btn-xs mt-2"> Kaufen</div>
         </div>
       </div>
@@ -19,31 +19,17 @@
 <script setup lang="ts">
 import {Item} from "@/types/item";
 import imageUrlBuilder from '@sanity/image-url'
-import {Client} from "@/api/client";
 import {Image} from "@/types/image";
+import {useMerchantStore} from "@/stores/merchant.store";
 
 const props = defineProps({
-  item: {
+  location: {
     type: Item,
     required: true
   }
 })
-
-const client = new Client();
-
-const builder = imageUrlBuilder({
-  projectId: client.projectId,
-  dataset: client.dataset,
-})
-
-const imageUrl = getImageUrl(props.item.image)
-
-function getImageUrl(image: Image): string | null {
-  if (image) {
-    return builder.image(image)
-  }
-  return null;
-}
+const merchantStore = useMerchantStore();
+const imageUrl = merchantStore.imageBuilder.getImageUrl(props.location.image)
 </script>
 
 <style scoped>

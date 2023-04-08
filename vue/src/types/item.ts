@@ -6,11 +6,11 @@ export class Item {
     description:string;
     image:Image;
 
-    constructor(merchant:Item) {
-        this.name = merchant.name;
-        this.price = merchant.price;
-        this.description = merchant.description;
-        this.image = merchant.image;
+    constructor(item:Item) {
+        this.name = item.name;
+        this.price = item.price;
+        this.description = item.description;
+        this.image = item.image;
     }
 
 }

@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@sanity/client": "^5.4.2",
     "@sanity/image-url": "^1.0.2",
     "daisyui": "^2.51.5",
     "pinia": "^2.0.32",

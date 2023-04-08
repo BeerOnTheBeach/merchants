@@ -1,7 +1,7 @@
 <template>
   <router-link to="/" class="item cursor-pointer m-2 ">
     <div class="card w-30 bg-base-100 shadow-xl max-w-xs max-h-72">
-      <figure><img :src="getImageUrl(props.item.image)" alt="Shoes" /></figure>
+      <figure v-if="imageUrl"><img :src="imageUrl" alt="" /></figure>
       <div class="card-body">
         <h2 class="card-title">
           {{props.item.name}}
@@ -23,7 +23,10 @@ import {Client} from "@/api/client";
 import {Image} from "@/types/image";
 
 const props = defineProps({
-  item: Item
+  item: {
+    type: Item,
+    required: true
+  }
 })
 
 const client = new Client();
@@ -33,8 +36,13 @@ const builder = imageUrlBuilder({
   dataset: client.dataset,
 })
 
-function getImageUrl(image:Image) {
-  return builder.image(image)
+const imageUrl = getImageUrl(props.item.image)
+
+function getImageUrl(image:Image): string|null {
+  if (image) {
+    return builder.image(image)
+  }
+  return null;
 }
 </script>
 

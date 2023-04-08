@@ -1,15 +1,21 @@
 <template>
   <div>
-    <Merchant :merchant="merchant" :key="merchant" v-for="merchant in merchants"></Merchant>
+    <template :key="merchant" v-for="merchant in merchants">
+      <MerchantBase v-if="merchant" :merchant="merchant"></MerchantBase>
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
 import {Client} from "@/api/client";
-import Merchant from "../components/Merchants/Merchant.vue"
-import {onMounted, ref} from "vue";
+import MerchantBase from "../components/Merchants/MerchantBase.vue"
+import {Merchant} from "@/types/merchant";
 
-let merchants = ref([] as Array<Merchant>);
+import {onMounted, ref} from "vue";
+import type { Ref } from 'vue'
+
+
+let merchants:Ref<Array<Merchant>> = ref([]);
 const client = new Client();
 
 onMounted(async () => {

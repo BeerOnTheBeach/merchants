@@ -1,14 +1,14 @@
 <template>
-  <div class="merchant ml-3 mt-5">
-    <div class="merchant-data flex ml-5 p-3">
+  <div class="merchant p-3">
+    <div class="merchant-data flex ">
       <div class="avatar placeholder">
-        <div class="bg-neutral-focus text-neutral-content rounded-full w-24">
-          <span class="text-3xl">{{ props.merchant.name[0] }}</span>
+        <div class="bg-neutral-focus text-neutral-content rounded-full w-12 h-12">
+          <span class="text-1xl">{{ props.merchant.name[0] }}</span>
         </div>
       </div>
-      <h1 class="ml-4 pt-3">{{ props.merchant.name }}</h1>
+      <div class="ml-2 pt-3 text-1xl">{{ props.merchant.name }}</div>
     </div>
-    <div class="items-container flex">
+    <div class="items-container flex flex-wrap">
       <ItemBase :item="item" :key="item" v-for="item in merchant.items"></ItemBase>
     </div>
   </div>
@@ -27,5 +27,7 @@ const props = defineProps({
 </script>
 
 <style scoped>
+.merchant {
 
+}
 </style>

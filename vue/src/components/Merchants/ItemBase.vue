@@ -1,15 +1,15 @@
 <template>
-  <router-link to="/" class="item cursor-pointer m-2 ">
-    <div class="card w-30 bg-base-100 shadow-xl max-w-xs max-h-72">
-      <figure v-if="imageUrl"><img :src="imageUrl" alt="" /></figure>
-      <div class="card-body">
+  <router-link to="/" class="item cursor-pointer mt-2">
+    <div class="card card-compact shadow-xl">
+      <figure class="w-32 h-32"><img v-if="imageUrl" class="object-cover" :src="imageUrl" alt=""/></figure>
+      <div class="w-40 h-48 card-body">
         <h2 class="card-title">
-          {{props.item.name}}
-          <div v-if="Math.floor(Math.random() * 2) === 1" class="badge badge-secondary">NEW</div>
+          {{ props.item.name }}
         </h2>
-        <p>{{ props.item.description }}</p>
-        <div class="card-actions justify-end">
-          <div class="badge badge-outline">{{props.item.price}} Kupfer</div>
+        <div>{{ props.item.description }}</div>
+        <div class="mt-auto">
+          <div class="badge badge-outline">Preis: {{ props.item.price }} Kupfer</div>
+          <div class="btn btn-primary btn-xs mt-2"> Kaufen</div>
         </div>
       </div>
     </div>
@@ -38,7 +38,7 @@ const builder = imageUrlBuilder({
 
 const imageUrl = getImageUrl(props.item.image)
 
-function getImageUrl(image:Image): string|null {
+function getImageUrl(image: Image): string | null {
   if (image) {
     return builder.image(image)
   }

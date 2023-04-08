@@ -1,7 +1,7 @@
 <template>
-  <router-link to="/" class="item cursor-pointer mt-2">
-    <div class="card card-compact shadow-xl">
-      <figure class="w-32 h-32"><img v-if="imageUrl" class="object-cover" :src="imageUrl" alt=""/></figure>
+  <router-link to="#" class="item cursor-pointer mt-2 ml-1.5">
+    <div class="card card-compact shadow-xl border border-accent">
+      <figure class="w-40 h-32"><img v-if="imageUrl" class="object-cover" :src="imageUrl" alt=""/></figure>
       <div class="w-40 h-48 card-body">
         <h2 class="card-title">
           {{ props.item.name }}

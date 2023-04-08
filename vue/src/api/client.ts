@@ -7,18 +7,40 @@ export class Client {
 
 
     async request(query: string): Promise<Array<Merchant>> {
-        const result = await fetch(this.baseURL + this.assembleQuery(query))
+        return await fetch(this.baseURL + this.assembleQuery(query))
             .then((res) => res.json())
             .then(({result}) => {
-                    return result;
+                return result;
 
             })
             .catch((err) => console.error(err));
-        console.log(result);
-        return result;
+    }
+
+    async requestWithRefs(query: string, refs: Array<string>): Promise<Array<Merchant>> {
+        return await fetch(this.baseURL + this.assembleRefQuery(query, refs))
+            .then((res) => res.json())
+            .then(({result}) => {
+                return result;
+
+            })
+            .catch((err) => console.error(err));
     }
 
     private assembleQuery(schemaName:string): string {
         return encodeURIComponent(`*[_type == "${schemaName}"]`)
+    }
+
+    private assembleRefQuery(schemaName:string, refs: Array<string>): string {
+        let refsQueryString = "";
+        refs.forEach((ref) => {
+            refsQueryString += `${ref}[]-> { ... },`
+        })
+        return encodeURIComponent(
+            `*[_type == "${schemaName}"]` +
+            `{
+                ...,
+                ${refsQueryString}
+            }`
+        )
     }
 }

@@ -1,7 +1,7 @@
 export default {
     name: 'location',
     type: 'document',
-    title: 'Location',
+    title: 'Locations',
     fields: [
         {
             name: 'name',

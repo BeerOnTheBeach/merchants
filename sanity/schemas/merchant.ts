@@ -1,7 +1,7 @@
 export default {
     name: 'merchant',
     type: 'document',
-    title: 'Merchant',
+    title: 'Merchants',
     fields: [
         {
             name: 'name',

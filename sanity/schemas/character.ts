@@ -1,7 +1,7 @@
 export default {
     name: 'character',
     type: 'document',
-    title: 'Character',
+    title: 'Characters',
     fields: [
         {
             name: 'name',

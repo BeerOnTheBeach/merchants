@@ -9,10 +9,15 @@ export default {
             type: 'string'
         },
         {
-            name: 'items',
+            name: 'itemsRef',
             title: 'Items',
             type: 'array',
-            of: [{type: 'item'}]
+            of: [{
+                    name: 'item',
+                    title: 'Item',
+                    type: 'reference',
+                    to: [{ type: 'item' }],
+            }],
         }
     ]
 }

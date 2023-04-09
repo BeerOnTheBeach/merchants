@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="`/location/${props.location._id}`">
+  <router-link v-if="props.location.active" :to="`/location/${props.location._id}`">
     <div class="location p-3">
       <h2>{{ props.location.name }}</h2>
       <div v-if="imageUrl">

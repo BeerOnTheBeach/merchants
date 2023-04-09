@@ -6,11 +6,18 @@ export default class Location extends Entity {
     name: string;
     merchants: Array<Merchant>
     image: Image;
+    active: boolean;
 
-    constructor(id: string, rev: string, type: string, createdAt: string, updatedAt: string, name: string, merchants: Array<Merchant>, image: Image) {
+    constructor(id: string, rev: string,
+                type: string, createdAt: string,
+                updatedAt: string, name: string,
+                merchants: Array<Merchant>, image: Image,
+                active: boolean
+    ) {
         super(id, rev, type, createdAt, updatedAt);
         this.name = name;
         this.merchants = merchants;
         this.image = image;
+        this.active = active;
     }
 }

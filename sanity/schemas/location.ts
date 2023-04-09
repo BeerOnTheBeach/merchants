@@ -23,6 +23,11 @@ export default {
                     type: 'reference',
                     to: [{ type: 'merchant' }],
             }],
-        }
+        },
+        {
+            title: 'Aktiv',
+            name: 'active',
+            type: 'boolean',
+        },
     ]
 }

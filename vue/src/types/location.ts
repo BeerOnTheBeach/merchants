@@ -4,6 +4,7 @@ import Entity from "@/types/entity";
 
 export default class Location extends Entity {
     name: string;
+    description: string;
     merchants: Array<Merchant>
     image: Image;
     active: boolean;
@@ -11,11 +12,13 @@ export default class Location extends Entity {
     constructor(id: string, rev: string,
                 type: string, createdAt: string,
                 updatedAt: string, name: string,
+                description: string,
                 merchants: Array<Merchant>, image: Image,
                 active: boolean
     ) {
         super(id, rev, type, createdAt, updatedAt);
         this.name = name;
+        this.description = description;
         this.merchants = merchants;
         this.image = image;
         this.active = active;

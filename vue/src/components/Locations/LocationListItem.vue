@@ -1,12 +1,14 @@
 <template>
-  <router-link v-if="props.location.active" :to="`/location/${props.location._id}`">
-    <div class="location p-3">
-      <h2>{{ props.location.name }}</h2>
-      <div v-if="imageUrl">
-        <img :src="imageUrl" alt="">
+    <div v-if="props.location.active" class="hero" :style="'background-image: url(' + imageUrl + ');'">
+      <div class="hero-overlay bg-opacity-60"></div>
+      <div class="hero-content text-center text-neutral-content">
+        <div class="max-w-md">
+          <h1 class="mb-5 text-5xl font-bold">{{ props.location.name }}</h1>
+          <p class="mb-5">{{ props.location.description }}</p>
+          <router-link :to="`/location/${props.location._id}`" class="btn btn-primary">Details</router-link>
+        </div>
       </div>
     </div>
-  </router-link>
 </template>
 
 <script setup lang="ts">

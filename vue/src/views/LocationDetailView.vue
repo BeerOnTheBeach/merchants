@@ -18,7 +18,7 @@ const merchantStore = useMerchantStore();
 const route = useRoute()
 
 onMounted(async () => {
-  await merchantStore.setCurrentLocation(route.params.id as string);
+  await merchantStore.setCurrentLocation(route.params.locationId as string);
 })
 
 </script>

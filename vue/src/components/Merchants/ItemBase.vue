@@ -1,25 +1,35 @@
 <template>
-  <router-link v-if="props.item" to="#" class="item cursor-pointer mt-2 ml-1.5">
+  <div v-if="props.item" class="item mt-2 ml-1.5 ">
     <div class="card card-compact shadow-xl border border-accent">
       <figure class="w-40 h-32"><img v-if="imageUrl" class="object-cover" :src="imageUrl" alt=""/></figure>
       <div class="w-40 h-48 card-body">
         <h2 class="card-title">
           {{ props.item.name }}
         </h2>
-        <div>{{ props.item.description }}</div>
+        <div>{{ descriptionShort }}</div>
         <div class="mt-auto">
           <div class="badge badge-outline">Preis: {{ props.item.price }} Kupfer</div>
-          <div class="btn btn-primary btn-xs mt-2"> Kaufen</div>
+          <div class="flex justify-between">
+            <div class="btn btn-primary btn-xs mt-2"> Kaufen</div>
+            <!-- The button to open the info modal -->
+            <label :for="itemIdClass" class="btn btn-secondary btn-xs mt-2"> Info</label>
+          </div>
         </div>
       </div>
     </div>
-  </router-link>
+    <!-- info-modal -->
+    <input type="checkbox" :id="itemIdClass" class="modal-toggle" />
+    <label :for="itemIdClass" class="modal cursor-pointer">
+      <label class="modal-box relative" for="">
+        <h3 class="text-lg font-bold">{{ props.item.name }}</h3>
+        <p class="py-4">{{ props.item.description }}</p>
+      </label>
+    </label>
+  </div>
 </template>
 
 <script setup lang="ts">
 import {Item} from "@/types/item";
-import imageUrlBuilder from '@sanity/image-url'
-import {Image} from "@/types/image";
 import {useMerchantStore} from "@/stores/merchant.store";
 
 const props = defineProps({
@@ -29,7 +39,18 @@ const props = defineProps({
   }
 })
 const merchantStore = useMerchantStore();
-const imageUrl = props.item && props.item.image ? merchantStore.imageBuilder.getImageUrl(props.item.image) : '';
+const imageUrl = merchantStore.imageBuilder.getImageUrl(props.item.image);
+const descriptionMaxLength = 50;
+const descriptionShort = sliceDescription(props.item.description);
+const itemIdClass = 'info-modal' + props.item._id;
+
+function sliceDescription(description: string):string {
+  let descSliced = props.item.description.slice(0, 50);
+  if (description.length > descriptionMaxLength) {
+    descSliced += '...'
+  }
+  return descSliced;
+}
 </script>
 
 <style scoped>

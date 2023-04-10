@@ -9,7 +9,7 @@
       <div class="ml-2 pt-3 text-1xl">{{ props.location.name }}</div>
     </div>
     <div class="items-container flex flex-wrap ">
-      <ItemBase :location="item" :key="item" v-for="item in location.items"></ItemBase>
+      <ItemBase :item="item" :key="item" v-for="item in location.items"></ItemBase>
     </div>
   </div>
 </template>

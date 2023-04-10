@@ -22,7 +22,7 @@ const router = createRouter({
       component: CharacterView
     },
     {
-      path: '/character/:id',
+      path: '/character/:characterId',
       name: 'Character',
       component: CharacterDetailView
     },
@@ -32,21 +32,19 @@ const router = createRouter({
       component: LocationView
     },
     {
-      path: '/location/:id',
+      path: '/location/:locationId',
       name: 'Ort',
       component: LocationDetailView,
-      children: [
-        {
-          path: '/merchant',
-          name: 'Merchants',
-          component: MerchantView
-        },
-        {
-          path: '/merchant/:id',
-          name: 'Merchant',
-          component: MerchantDetailView
-        },
-      ]
+    },
+    {
+      path: '/location/:locationId/merchant',
+      name: 'Merchants',
+      component: MerchantView
+    },
+    {
+      path: '/location/:locationId/merchant/:merchantId',
+      name: 'Merchant',
+      component: MerchantDetailView
     },
     {
       path: '/merchant-list',

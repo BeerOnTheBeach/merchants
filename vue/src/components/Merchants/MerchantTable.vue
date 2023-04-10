@@ -7,7 +7,7 @@
         <div class="max-w-md">
           <h1 class="mb-5 text-5xl font-bold">{{ merchant.name }}</h1>
           <p class="mb-5">{{ merchant.description }}</p>
-          <router-link :to="`merchant/${merchant._id}`" class="btn btn-primary">Items: {{ getItemAmount(merchant) }}
+          <router-link :to="`${$route.params.locationId}/merchant/${merchant._id}`" class="btn btn-primary">Items: {{ getItemAmount(merchant) }}
           </router-link>
         </div>
       </div>

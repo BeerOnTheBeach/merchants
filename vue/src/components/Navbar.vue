@@ -2,7 +2,7 @@
   <div class="navbar-container mb-3">
     <div class="navbar overflow-x-auto">
       <div class="navbar-start">
-        <router-link class="btn btn-ghost" to="/">
+        <router-link class="btn btn-ghost p-2" to="/">
           <IconHome></IconHome>
         </router-link>
       </div>

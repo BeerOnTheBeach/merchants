@@ -1,5 +1,5 @@
 <template>
-  <div>{{ router.currentRoute.value.name }}</div>
+  <div>Charakter-Detailansicht</div>
 </template>
 
 <script setup lang="ts">

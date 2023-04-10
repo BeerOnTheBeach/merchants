@@ -1,3 +1,6 @@
 ### BotB ==>
 .idea
+node_modules
+package.*
+*.sql
 ### <== BotB

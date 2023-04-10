@@ -4,7 +4,7 @@ import type {Item} from "@/types/item";
 
 export default class Character extends Entity {
     name: string;
-    money: string;
+    money: number;
     items: Array<Item>
     image: Image;
     active: boolean;
@@ -12,14 +12,14 @@ export default class Character extends Entity {
     constructor(id: string, rev: string,
                 type: string, createdAt: string,
                 updatedAt: string, name: string,
-                description: string,
-                merchants: Array<Item>, image: Image,
+                money: number,
+                items: Array<Item>, image: Image,
                 active: boolean
     ) {
         super(id, rev, type, createdAt, updatedAt);
         this.name = name;
-        this.money = description;
-        this.items = merchants;
+        this.money = money;
+        this.items = items;
         this.image = image;
         this.active = active;
     }

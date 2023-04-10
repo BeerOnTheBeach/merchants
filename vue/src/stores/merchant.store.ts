@@ -1,9 +1,10 @@
-import { defineStore } from 'pinia'
+import {defineStore} from 'pinia'
 import type Merchant from "@/types/merchant";
 import type Location from "@/types/location";
 import {Client} from "@/api/client";
 import {ImageBuilder} from "@/utils/imageBuilder";
 import type Character from "@/types/character";
+import type {Item} from "@/types/item";
 
 interface MerchantStore {
   projectId: string;
@@ -89,6 +90,9 @@ export const useMerchantStore = defineStore( {
         this.currentCharacter = result[0] as Character;
       }
       this.loading = false;
+    },
+    async buyItem(char: Character, item: Item) {
+      return await this.client.buyItem(char, item);
     }
   },
   getters: {

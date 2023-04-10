@@ -5,7 +5,7 @@
         <div class="max-w-md">
           <h1 class="mb-5 text-5xl font-bold">{{ props.location.name }}</h1>
           <p class="mb-5">{{ props.location.description }}</p>
-          <router-link :to="`/location/${props.location._id}`" class="btn btn-primary">Details</router-link>
+          <router-link :to="`/location/${props.location._id}`" class="btn btn-primary">Händler: {{merchantAmount}}</router-link>
         </div>
       </div>
     </div>
@@ -14,6 +14,7 @@
 <script setup lang="ts">
 import Location from "@/types/location";
 import {useMerchantStore} from "@/stores/merchant.store";
+import {computed} from "vue";
 
 const props = defineProps({
   location: {
@@ -23,8 +24,10 @@ const props = defineProps({
 })
 
 const merchantStore = useMerchantStore();
-
 const imageUrl = merchantStore.imageBuilder.getImageUrl(props.location.image)
+const merchantAmount = computed(() => {
+  return props.location.merchants ? props.location.merchants.length : "-";
+})
 </script>
 
 <style scoped>

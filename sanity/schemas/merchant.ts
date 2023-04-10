@@ -23,6 +23,11 @@ export default {
                     type: 'reference',
                     to: [{ type: 'item' }],
             }],
-        }
+        },
+        {
+            title: 'Aktiv',
+            name: 'active',
+            type: 'boolean',
+        },
     ]
 }

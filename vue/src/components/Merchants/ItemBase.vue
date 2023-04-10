@@ -40,7 +40,7 @@ const props = defineProps({
   }
 })
 const merchantStore = useMerchantStore();
-const imageUrl = merchantStore.imageBuilder.getImageUrl(props.item.image);
+const imageUrl = `${merchantStore.imageBuilder.getImageUrl(props.item.image)}`;
 const descriptionMaxLength = 50;
 const descriptionShort = sliceDescription(props.item.description);
 const itemIdClass = 'info-modal' + props.item._id;

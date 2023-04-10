@@ -4,7 +4,7 @@
     <div class="hero-content text-center text-neutral-content">
       <div class="max-w-md">
         <h1 class="mb-5 text-5xl font-bold">{{ props.character.name }}</h1>
-        <p class="mb-5">{{ props.character.description }}</p>
+        <p class="mb-5"></p>
         <div class="flex">
           <router-link :to="`/character/${props.character._id}`" class="btn btn-primary m-2">Details</router-link>
           <div @click="setCharacter(props.character._id)" class="btn btn-secondary m-2">Charakter auswählen</div>

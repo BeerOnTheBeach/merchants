@@ -19,13 +19,12 @@
 
 <script setup lang="ts">
 import {useMerchantStore} from "@/stores/merchant.store";
-import IconMoney from "./icons/IconMoney.vue"
 import {computed} from "vue";
 
 const merchantStore = useMerchantStore();
 const imageUrl = computed(() => {
   return merchantStore.currentCharacter && merchantStore.currentCharacter.image
-      ? merchantStore.imageBuilder.getImageUrl(merchantStore.currentCharacter.image) : null;
+      ? `${merchantStore.imageBuilder.getImageUrl(merchantStore.currentCharacter.image)}` : null;
 })
 
 </script>

@@ -9,6 +9,11 @@ export default {
             type: 'string'
         },
         {
+            title: 'Bild',
+            name: 'image',
+            type: 'image',
+        },
+        {
             name: 'money',
             title: 'Geld',
             type: 'number'
@@ -23,6 +28,11 @@ export default {
                 type: 'reference',
                 to: [{ type: 'item' }],
             }],
-        }
+        },
+        {
+            title: 'Aktiv',
+            name: 'active',
+            type: 'boolean',
+        },
     ]
 }

@@ -3,6 +3,7 @@ import type Merchant from "@/types/merchant";
 import type Location from "@/types/location";
 import {Client} from "@/api/client";
 import {ImageBuilder} from "@/utils/imageBuilder";
+import type Character from "@/types/character";
 
 interface MerchantStore {
   projectId: string;
@@ -11,8 +12,10 @@ interface MerchantStore {
   imageBuilder: ImageBuilder;
   merchants: Array<Merchant>;
   locations: Array<Location>;
+  characters: Array<Character>;
   currentLocation: Location|null,
   currentMerchant: Merchant|null,
+  currentCharacter: Character|null,
   loading: boolean;
 }
 
@@ -25,8 +28,10 @@ export const useMerchantStore = defineStore( {
     imageBuilder: {} as ImageBuilder,
     merchants: [],
     locations: [],
+    characters: [],
     currentLocation: null,
     currentMerchant: null,
+    currentCharacter: null,
     loading: false,
   }),
   actions: {
@@ -50,6 +55,14 @@ export const useMerchantStore = defineStore( {
       }
       this.loading = false;
     },
+    async fetchCharacters() {
+      this.loading = true;
+      const result = await this.client.findAllWithRefs('character', ['merchants'])
+      if(result.length > 0) {
+        this.characters = result;
+      }
+      this.loading = false;
+    },
     async setCurrentLocation(id:string) {
       this.loading = true;
       this.currentLocation = null;
@@ -65,6 +78,15 @@ export const useMerchantStore = defineStore( {
       const result = await this.client.findOneWithRefs(id, 'merchant', ['items'])
       if(result.length > 0) {
         this.currentMerchant = result[0] as Merchant;
+      }
+      this.loading = false;
+    },
+    async setCurrentCharacter(id:string) {
+      this.loading = true;
+      this.currentCharacter = null;
+      const result = await this.client.findOneWithRefs(id, 'character', ['items'])
+      if(result.length > 0) {
+        this.currentCharacter = result[0] as Character;
       }
       this.loading = false;
     }

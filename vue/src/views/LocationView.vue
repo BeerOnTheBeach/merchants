@@ -17,7 +17,8 @@ const merchantStore = useMerchantStore();
 
 onMounted(() => {
   merchantStore.fetchLocations();
-})</script>
+})
+</script>
 
 <style scoped>
 

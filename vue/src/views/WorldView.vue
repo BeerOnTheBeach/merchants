@@ -1,13 +1,14 @@
 <template>
   <Loading></Loading>
-  <div v-if="!merchantStore.loading" class=" divide-y">
+  <div v-if="!merchantStore.loading" class="divide-y">
+    <div>Wähle deine Welt!</div>
     <template :key="world._id" v-for="world in merchantStore.worlds">
       <div class="hero" :style="'background-image: url(' + merchantStore.imageBuilder.getImageUrl(world.image) + ');'">
         <div class="hero-overlay bg-opacity-60"></div>
         <div class="hero-content text-center text-neutral-content">
           <div class="max-w-md">
             <h1 class="mb-5 text-5xl font-bold">{{ world.name }}</h1>
-            <p class="mb-5"></p>
+            <p class="mb-5">{{world.description}}</p>
             <div class="flex">
               <router-link :to="`/world/${world._id}`" class="btn btn-primary m-2">Details</router-link>
               <div class="btn btn-secondary m-2">Welt auswählen</div>

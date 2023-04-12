@@ -21,6 +21,7 @@ interface MerchantStore {
   currentLocation: Location|null,
   currentMerchant: Merchant|null,
   currentCharacter: Character|null,
+  currentWorld: World|null,
   loading: boolean;
 }
 
@@ -39,6 +40,7 @@ export const useMerchantStore = defineStore( {
     currentLocation: null,
     currentMerchant: null,
     currentCharacter: null,
+    currentWorld: null,
     loading: false,
   }),
   actions: {
@@ -92,6 +94,15 @@ export const useMerchantStore = defineStore( {
       const result = await this.client.findOneWithRefs(id, 'location', ['merchants'])
       if(result.length > 0) {
         this.currentLocation = result[0] as Location;
+      }
+      this.loading = false;
+    },
+    async setCurrentWorld(id:string) {
+      this.loading = true;
+      this.currentWorld = null;
+      const result = await this.client.findOneWithRefs(id, 'world', ['characters', 'locations'])
+      if(result.length > 0) {
+        this.currentWorld = result[0] as World;
       }
       this.loading = false;
     },

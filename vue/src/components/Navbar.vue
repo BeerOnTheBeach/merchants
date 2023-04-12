@@ -7,10 +7,12 @@
         </router-link>
       </div>
       <div class="navbar-center">
-        Merch 'n Dice
-        <router-link :to="characterLink">
-          <CurrentCharacterAvatar></CurrentCharacterAvatar>
-        </router-link>
+        <div class="flex flex-col">
+          <div class="mb-2">Merch 'n Dice<div class="font-bold" v-if="currentWorldName">{{currentWorldName}}</div></div>
+          <router-link class="flex justify-center" :to="characterLink">
+            <CurrentCharacterAvatar></CurrentCharacterAvatar>
+          </router-link>
+        </div>
       </div>
       <div class="navbar-end">
         <CurrentCharacterStats></CurrentCharacterStats>
@@ -32,10 +34,19 @@ import IconHome from "./icons/IconHome.vue"
 import {useMerchantStore} from "@/stores/merchant.store";
 import CurrentCharacterAvatar from "./CurrentCharacterAvatar.vue"
 import CurrentCharacterStats from "./CurrentCharacterStats.vue"
+import {computed} from "vue";
 
 const merchantStore = useMerchantStore();
 const router = useRouter();
 const characterLink = merchantStore.currentCharacter ? `/character/${merchantStore.currentCharacter._id}` : '/character';
+
+const currentWorldName = computed(() => {
+  if (merchantStore.currentWorld && merchantStore.currentWorld.name !== '') {
+    return merchantStore.currentWorld.name;
+  } else {
+    return null;
+  }
+})
 </script>
 
 <style scoped>

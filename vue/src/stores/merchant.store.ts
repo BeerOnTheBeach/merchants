@@ -80,7 +80,7 @@ export const useMerchantStore = defineStore( {
     },
     async fetchWorlds() {
       this.loading = true;
-      const result = await this.client.findAllWithRefs('world')
+      const result = await this.client.findAllWithRefs('world', ['characters', 'locations'])
       if(result.length > 0) {
         this.worlds = result;
       }

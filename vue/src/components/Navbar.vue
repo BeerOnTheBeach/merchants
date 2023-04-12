@@ -7,6 +7,7 @@
         </router-link>
       </div>
       <div class="navbar-center">
+        Merch 'n Dice
         <router-link :to="characterLink">
           <CurrentCharacterAvatar></CurrentCharacterAvatar>
         </router-link>
@@ -17,6 +18,7 @@
     </div>
     <div class="divider mb-2 mt-0 pt-5">{{ router.currentRoute.value.name }}</div>
     <div class="navbar overflow-x-auto">
+      <router-link class="mr-2 btn btn-accent btn-sm normal-case" to="/world">Worlds</router-link>
       <router-link class="mr-2 btn btn-accent btn-sm normal-case" to="/character">Characters</router-link>
       <router-link class="mr-2 btn btn-accent btn-sm normal-case" to="/location">Locations</router-link>
       <router-link class="mr-2 btn btn-accent btn-sm normal-case" to="/merchant-list">Merchants</router-link>

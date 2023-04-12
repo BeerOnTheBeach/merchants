@@ -7,6 +7,7 @@ import CharacterDetailView from '../views/CharacterDetailView.vue'
 import MerchantView from '../views/MerchantView.vue'
 import MerchantDetailView from '../views/MerchantDetailView.vue'
 import MerchantOverviewView from '../views/MerchantOverviewView.vue'
+import WorldView from '../views/WorldView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +36,11 @@ const router = createRouter({
       path: '/location/:locationId',
       name: 'Ort',
       component: LocationDetailView,
+    },
+    {
+      path: '/world',
+      name: 'World',
+      component: WorldView
     },
     {
       path: '/location/:locationId/merchant',
